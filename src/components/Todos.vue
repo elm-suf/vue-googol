@@ -1,14 +1,20 @@
 <template>
-  <div>
-    <h1 v-for="(item, index) in todos" :key="index" >{{item}}</h1>
-    
-  </div>
+  <b-row>
+    <b-col v-for="(item, index) in todos" :key="index">
+      <todo-item :item="item"/>
+    </b-col>
+  </b-row>
 </template>
 
 <script>
+import TodoItem from "./TodoItem.vue";
+
 export default {
   name: "Todos",
-  props: ["todos"]
+  props: ["todos"],
+  components: {
+    TodoItem
+  }
 };
 </script>
 
