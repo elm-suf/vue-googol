@@ -1,19 +1,31 @@
 <template>
   <div id="app">
-    <todos :todos="todos"/>
+    <googol :numbers="numbers"/>
   </div>
 </template>
 
 <script>
 import Todos from "./components/Todos.vue";
+import Googol from "./components/GoogolGame.vue";
 
 export default {
   name: "app",
   components: {
-    Todos
+    Todos,
+    //  <todos :todos="todos"/>
+    Googol
   },
   data() {
     return {
+      numbers: Array(40)
+        .fill()
+        .map((num, index) => {
+          return {
+            i: index,
+            hidden: true,
+            value: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)
+          };
+        }),
       todos: [
         {
           userId: 1,
