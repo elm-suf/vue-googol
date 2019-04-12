@@ -8,18 +8,18 @@
             ></rect>
         </svg>
 
-<!--        <b-btn @click="startSimulation">START SIMULATION</b-btn>-->
+        <!--        <b-btn @click="startSimulation">START SIMULATION</b-btn>-->
     </div>
 </template>
 
 <script>
     import * as d3 from "d3";
 
-
     export default {
         name: "ChartComponent",
 
         props: ["dataset"],
+
         beforeMount() {
             console.log("created data", this.dataset);
 
@@ -51,13 +51,6 @@
                 y.domain([0, d3.max(this.dataset, d => d.value)]);
                 return {x, y};
             },
-            startSimulation() {
-                let current = 0;
-                let arr = Array();
-                setInterval(function () {
-                    alert("continue" + dataset);
-                }, 1000);
-            }
         }
 
     };
@@ -76,6 +69,11 @@
 
     .hidden {
         visibility: hidden;
+        display: none;
+    }
+
+    rect {
+        transition: all 5000ms ease;
     }
 
 </style>

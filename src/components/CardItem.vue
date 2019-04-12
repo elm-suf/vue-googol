@@ -8,19 +8,21 @@
         >
             <b-card-text :class="{hidden:item.hidden}">{{item.value}}</b-card-text>
 
-            <b-button @click="filpCard" variant="primary">Flip Card</b-button>
+            <b-button @click="flipCard" variant="primary">Flip Card</b-button>
         </b-card>
     </div>
 </template>
 
 <script>
+    import {bus} from '../main'
+
     export default {
         name: "CardItem",
         props: ["item"],
         methods: {
-            filpCard() {
-                console.log(this.item.i);
+            flipCard() {
                 this.item.hidden = false;
+                bus.$emit('flip', this.item);
             }
         }
     };
